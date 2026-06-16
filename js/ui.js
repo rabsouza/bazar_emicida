@@ -68,8 +68,8 @@ function abrirModal(produto) {
         <div class="mgallery">
           <div class="mgallery-track">
             ${imgs.length
-              ? imgs.map((s,i) => `<img src="${s}" class="mgallery-img${i===0?' on':''}" alt="Foto ${i+1}" loading="lazy">`).join('')
-              : `<div class="mgallery-empty">Sem foto</div>`}
+              ? imgs.map((s,i) => `<img src="${s}" class="mgallery-img${i===0?' on':''}" alt="Foto ${i+1}" loading="lazy" onerror="this.onerror=null;this.src='imagens/placeholder_bazar.jpg'">`).join('')
+              : `<img src="imagens/placeholder_bazar.jpg" class="mgallery-img on" alt="Sem foto">`}
           </div>
           ${imgs.length > 1 ? `
             <button class="mgallery-btn prev" aria-label="Anterior">&#8249;</button>
@@ -138,8 +138,8 @@ function renderCardProduto(produto) {
   card.innerHTML = `
     <div class="card-thumb">
       ${thumb
-        ? `<img src="${thumb}" alt="${produto.nome}" loading="lazy">`
-        : `<div class="thumb-empty">📦</div>`}
+        ? `<img src="${thumb}" alt="${produto.nome}" loading="lazy" onerror="this.onerror=null;this.src='imagens/placeholder_bazar.jpg'">`
+        : `<img src="imagens/placeholder_bazar.jpg" alt="${produto.nome}" loading="lazy">`}
       ${!disp ? `<div class="badge-esgotado"><span>Vendido</span></div>` : ''}
       ${imgs.length > 1 ? `<span class="badge-fotos">${imgs.length} fotos</span>` : ''}
     </div>
