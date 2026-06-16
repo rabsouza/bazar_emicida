@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p \"D:\\\\codes\\\\bazar_emicida\\\\.claude\")",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(where php *)",
+      "Bash(where ruby *)",
+      "Bash(where node.exe)",
+      "Read(//c/Program Files/**)"
+    ]
+  }
+}

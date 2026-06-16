@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bazar Emicida — Tudo tem história, tudo acha dono novo</title>
+  <meta name="description" content="Bazar de itens pessoais em ótimo estado. Mudança chegou, os preços são justos e a negociação é direto no WhatsApp.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ─── HERO ─────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-eyebrow label-sm">Liquidação de mudança &mdash; BH/MG</div>
+        <h1 class="hero-title display">
+          Tudo tem<br><em>história.</em><br>Tudo acha<br>dono novo.
+        </h1>
+        <p class="hero-text">
+          Mudança chegou e com ela a hora de deixar ir o que ficou grande demais
+          pra uma casa. São anos de estrada em cada peça &mdash;
+          <strong>tudo meu, bem cuidado</strong>, com preço justo e negociação
+          <strong>direto no WhatsApp.</strong>
+        </p>
+        <div class="hero-cta">
+          <a href="produtos.html" class="btn btn-primary">Ver todos os produtos</a>
+          <a href="categorias.html" class="btn btn-ghost">Explorar categorias</a>
+        </div>
+        <div class="hero-stats">
+          <div><span class="stat-n" id="statDisp">—</span><span class="stat-l">Disponíveis</span></div>
+          <div><span class="stat-n">6</span><span class="stat-l">Categorias</span></div>
+          <div><span class="stat-n">BH</span><span class="stat-l">Retirada MG</span></div>
+        </div>
+      </div>
+      <div class="hero-badge" aria-hidden="true">
+        <span class="hero-badge-icon">🏍️</span>
+        <span class="hero-badge-text">Dono do bazar</span>
+        <span class="hero-badge-name">Emicida</span>
+        <span class="hero-badge-text">Motociclista &amp; gamer</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── HISTÓRIA ──────────────────────────────────────────── -->
+<section class="historia">
+  <div class="container">
+    <div class="historia-inner">
+      <div class="historia-accent"></div>
+      <div class="historia-content">
+        <blockquote>
+          "Cada item desse bazar tem <strong>uma história minha</strong>. A mesa que viu reunião de família,
+          o capacete que foi companheiro de estrada, o eletrônico que acompanhou noites longas
+          e o jogo que ficou na prateleira esperando a mesa certa aparecer.
+          Não é lixo, não é resto &mdash; é <strong>coisa boa que precisa de um novo dono</strong>
+          que vai dar o valor que merece. Me ajuda a fazer essa mudança mais leve?"
+        </blockquote>
+        <p class="historia-sig">— Emicida, dono do bazar e motociclista de plantão</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CATEGORIAS ────────────────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="sh">
+      <span class="sh-label label-sm">Navegar</span>
+      <h2 class="sh-title display">O que você está<br>procurando?</h2>
+    </div>
+    <div class="grid-cats" id="listaCats"></div>
+  </div>
+</section>
+
+<!-- ─── DESTAQUES ─────────────────────────────────────────── -->
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="sh">
+      <span class="sh-label label-sm">Disponíveis agora</span>
+      <h2 class="sh-title display">Últimos itens</h2>
+      <p class="sh-sub">Clica no card pra ver detalhes e negociar no WhatsApp.</p>
+    </div>
+    <div class="grid-auto" id="listaDestaques"></div>
+    <div style="text-align:center;margin-top:36px">
+      <a href="produtos.html" class="btn btn-ghost">Ver tudo &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA ───────────────────────────────────────────────── -->
+<section class="section-sm">
+  <div class="container">
+    <div class="banner" data-deco="WhatsApp">
+      <div class="banner-center">
+        <span class="sh-label label-sm" style="color:var(--orange-txt)">Contato direto</span>
+        <h2 class="sh-title display" style="margin-top:8px">Achou o que<br><em style="font-style:normal;color:var(--orange)">procurava?</em></h2>
+        <p>Qualquer dúvida, proposta ou papo sobre um item — vai direto no WhatsApp. Respondo no mesmo dia.</p>
+        <a href="https://wa.me/5531988012741?text=Oi%2C+vim+do+Bazar+Emicida+e+quero+saber+mais!"
+           target="_blank" rel="noopener"
+           class="btn btn-wpp" style="max-width:300px;margin:0 auto">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Falar no WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="js/config.js"></script>
+<script src="js/data.js"></script>
+<script src="js/ui.js"></script>
+<script>
+  renderNavbar();
+  renderFooter();
+
+  // Categorias
+  const listaCats = document.getElementById('listaCats');
+  CONFIG.CATEGORIAS.forEach(cat => {
+    const a = document.createElement('a');
+    a.href = `produtos.html?categoria=${cat.id}`;
+    a.className = 'card-cat';
+    a.innerHTML = `
+      <span class="card-cat-icon">${cat.icone}</span>
+      <span class="card-cat-name display">${cat.nome}</span>
+      <p class="card-cat-desc">${cat.descricao}</p>
+      <div class="card-cat-footer">
+        <span class="card-cat-count" id="count-${cat.id}">—</span>
+        <span class="card-cat-arrow">&#8594;</span>
+      </div>
+    `;
+    listaCats.appendChild(a);
+  });
+
+  // Produtos
+  const listaDestaques = document.getElementById('listaDestaques');
+  renderLoading(listaDestaques);
+
+  fetchProdutos().then(todos => {
+    const disp = todos.filter(isDisponivel);
+    document.getElementById('statDisp').textContent = disp.length || '0';
+
+    // Contador por categoria
+    CONFIG.CATEGORIAS.forEach(cat => {
+      const el = document.getElementById(`count-${cat.id}`);
+      if (el) {
+        const n = disp.filter(p => p.categoria === cat.id).length;
+        el.textContent = `${n} disponíve${n !== 1 ? 'is' : 'l'}`;
+      }
+    });
+
+    listaDestaques.innerHTML = '';
+    const recentes = disp.slice(0, 6);
+    if (!recentes.length) { renderVazio(listaDestaques, 'Nenhum item disponível no momento.'); return; }
+    recentes.forEach(p => listaDestaques.appendChild(renderCardProduto(p)));
+  });
+</script>
+</body>
+</html>

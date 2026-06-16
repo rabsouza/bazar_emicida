@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Categorias — Bazar Emicida</title>
+  <meta name="description" content="Navegue pelas categorias do Bazar Emicida: Motos, Eletrônicos, Jogos, Móveis, Casa e mais.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="page-header">
+  <div class="container">
+    <nav class="breadcrumb">
+      <a href="index.html">Home</a><span>&rsaquo;</span><span>Categorias</span>
+    </nav>
+    <h1 class="sh-title display" style="font-size:clamp(2rem,6vw,3.5rem)">O que você está<br><em style="font-style:normal;color:var(--orange)">procurando?</em></h1>
+    <p class="sh-sub" style="margin-top:8px">Seleciona a categoria e vai direto nos itens que te interessam.</p>
+  </div>
+</div>
+
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="grid-cats" id="listaCats"></div>
+  </div>
+</section>
+
+<section class="section-sm">
+  <div class="container">
+    <div class="banner" data-deco="?">
+      <div class="banner-center">
+        <span class="sh-label label-sm" style="color:var(--orange-txt)">Não achou</span>
+        <h2 class="sh-title display" style="margin-top:8px">Fala <em style="font-style:normal;color:var(--orange)">comigo.</em></h2>
+        <p>Pode ser que eu tenha algo que ainda não cadastrei. Me manda mensagem que a gente resolve, uai.</p>
+        <a href="contato.html" class="btn btn-ghost" style="margin:0 auto">Falar com o admin &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="js/config.js"></script>
+<script src="js/data.js"></script>
+<script src="js/ui.js"></script>
+<script>
+  renderNavbar();
+  renderFooter();
+
+  const lista = document.getElementById('listaCats');
+
+  fetchProdutos().then(todos => {
+    CONFIG.CATEGORIAS.forEach(cat => {
+      const total = todos.filter(p => p.categoria === cat.id).length;
+      const disp  = todos.filter(p => p.categoria === cat.id && isDisponivel(p)).length;
+
+      const a = document.createElement('a');
+      a.href = `produtos.html?categoria=${cat.id}`;
+      a.className = 'card-cat';
+      a.innerHTML = `
+        <span class="card-cat-icon">${cat.icone}</span>
+        <span class="card-cat-name display">${cat.nome}</span>
+        <p class="card-cat-desc">${cat.descricao}</p>
+        <div class="card-cat-footer">
+          <span class="card-cat-count">${total} item${total !== 1 ? 's' : ''} &mdash; ${disp} disponíve${disp !== 1 ? 'is' : 'l'}</span>
+          <span class="card-cat-arrow">&#8594;</span>
+        </div>
+      `;
+      lista.appendChild(a);
+    });
+  });
+</script>
+</body>
+</html>

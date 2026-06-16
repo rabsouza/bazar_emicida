@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produtos — Bazar Emicida</title>
+  <meta name="description" content="Todos os itens do Bazar Emicida. Filtre por categoria e negocie direto no WhatsApp.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="page-header">
+  <div class="container">
+    <nav class="breadcrumb" id="breadcrumb">
+      <a href="index.html">Home</a><span>&rsaquo;</span>
+      <a href="categorias.html">Categorias</a><span>&rsaquo;</span>
+      <span id="bcCat">Todos os produtos</span>
+    </nav>
+    <h1 class="sh-title display" id="pageTitle" style="font-size:clamp(2rem,6vw,3.5rem)">Todos os <em style="font-style:normal;color:var(--orange)">produtos</em></h1>
+    <p class="sh-sub" id="pageSub" style="margin-top:8px">Clica no card pra ver detalhes e negociar direto no WhatsApp.</p>
+  </div>
+</div>
+
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="filtro">
+      <input class="filtro-input" id="busca" type="text" placeholder="Buscar produto..." autocomplete="off">
+      <div class="filtro-tags" id="filtroTags"></div>
+    </div>
+    <p class="filtro-count" id="contador"></p>
+    <div class="grid-auto" id="lista"></div>
+  </div>
+</section>
+
+<script src="js/config.js"></script>
+<script src="js/data.js"></script>
+<script src="js/ui.js"></script>
+<script>
+  renderNavbar();
+  renderFooter();
+
+  const params = new URLSearchParams(window.location.search);
+  let catAtiva   = params.get('categoria') || '';
+  let buscaAtiva = '';
+  let todos      = [];
+
+  // Ajusta título se tem categoria
+  if (catAtiva) {
+    const cat = CONFIG.CATEGORIAS.find(c => c.id === catAtiva);
+    if (cat) {
+      document.getElementById('bcCat').textContent = cat.nome;
+      document.getElementById('pageTitle').innerHTML =
+        `<em style="font-style:normal;color:var(--orange)">${cat.icone}</em> ${cat.nome}`;
+      document.getElementById('pageSub').textContent = cat.descricao;
+    }
+  }
+
+  // Tags de filtro
+  const tagsEl = document.getElementById('filtroTags');
+  function mkTag(label, id) {
+    const b = document.createElement('button');
+    b.className = `ftag${catAtiva === id ? ' on' : ''}`;
+    b.textContent = label;
+    b.dataset.id  = id;
+    b.onclick = () => {
+      catAtiva = id;
+      tagsEl.querySelectorAll('.ftag').forEach(t => t.classList.toggle('on', t.dataset.id === id));
+      const url = new URL(window.location);
+      id ? url.searchParams.set('categoria', id) : url.searchParams.delete('categoria');
+      window.history.replaceState({}, '', url);
+      render();
+    };
+    return b;
+  }
+  tagsEl.appendChild(mkTag('Todos', ''));
+  CONFIG.CATEGORIAS.forEach(c => tagsEl.appendChild(mkTag(c.nome, c.id)));
+
+  // Busca
+  document.getElementById('busca').oninput = e => { buscaAtiva = e.target.value.toLowerCase().trim(); render(); };
+
+  function render() {
+    const lista = document.getElementById('lista');
+    let filtrados = todos;
+    if (catAtiva)   filtrados = filtrados.filter(p => p.categoria === catAtiva);
+    if (buscaAtiva) filtrados = filtrados.filter(p =>
+      p.nome?.toLowerCase().includes(buscaAtiva) || p.descricao?.toLowerCase().includes(buscaAtiva));
+
+    const disp = filtrados.filter(isDisponivel).length;
+    document.getElementById('contador').textContent =
+      `${filtrados.length} item${filtrados.length !== 1 ? 's' : ''} encontrado${filtrados.length !== 1 ? 's' : ''} — ${disp} disponíve${disp !== 1 ? 'is' : 'l'}`;
+
+    lista.innerHTML = '';
+    if (!filtrados.length) { renderVazio(lista, 'Nenhum item com esses filtros.'); return; }
+
+    // Disponíveis primeiro
+    [...filtrados.filter(isDisponivel), ...filtrados.filter(p => !isDisponivel(p))]
+      .forEach(p => lista.appendChild(renderCardProduto(p)));
+  }
+
+  const lista = document.getElementById('lista');
+  renderLoading(lista);
+  fetchProdutos().then(data => { todos = data; render(); });
+</script>
+</body>
+</html>
