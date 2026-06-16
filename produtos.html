@@ -91,9 +91,7 @@
     lista.innerHTML = '';
     if (!filtrados.length) { renderVazio(lista, 'Nenhum item com esses filtros.'); return; }
 
-    // Disponíveis primeiro
-    [...filtrados.filter(isDisponivel), ...filtrados.filter(p => !isDisponivel(p))]
-      .forEach(p => lista.appendChild(renderCardProduto(p)));
+    filtrados.filter(isDisponivel).forEach(p => lista.appendChild(renderCardProduto(p)));
   }
 
   const lista = document.getElementById('lista');
