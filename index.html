@@ -109,13 +109,13 @@
 <section class="section" style="padding-top:0">
   <div class="container">
     <div class="sh">
-      <span class="sh-label label-sm">Disponíveis agora</span>
-      <h2 class="sh-title display">Últimos itens</h2>
-      <p class="sh-sub">Clica no card pra ver detalhes e negociar no WhatsApp.</p>
+      <span class="sh-label label-sm">Seleção especial</span>
+      <h2 class="sh-title display">Melhores <em style="font-style:normal;color:var(--orange)">produtos</em></h2>
+      <p class="sh-sub">Itens de excelente qualidade, bem conservados e com os melhores custo-benefício do bazar.</p>
     </div>
     <div class="grid-auto" id="listaDestaques"></div>
     <div style="text-align:center;margin-top:36px">
-      <a href="produtos.html" class="btn btn-ghost">Ver tudo &rarr;</a>
+      <a href="produtos.html" class="btn btn-ghost">Ver todos os produtos &rarr;</a>
     </div>
   </div>
 </section>
@@ -182,9 +182,11 @@
     });
 
     listaDestaques.innerHTML = '';
-    const recentes = disp.slice(0, 6);
-    if (!recentes.length) { renderVazio(listaDestaques, 'Nenhum item disponível no momento.'); return; }
-    recentes.forEach(p => listaDestaques.appendChild(renderCardProduto(p)));
+    const melhores = disp
+      .sort((a, b) => parseFloat(b.preco) - parseFloat(a.preco))
+      .slice(0, 8);
+    if (!melhores.length) { renderVazio(listaDestaques, 'Nenhum item disponível no momento.'); return; }
+    melhores.forEach(p => listaDestaques.appendChild(renderCardProduto(p)));
   });
 </script>
 </body>
