@@ -188,7 +188,7 @@ function urlProduto(produto) {
 }
 
 function montarLinkShareWpp(produto) {
-  const msg = `Olha esse item no *Bazar Emicida*!\n\n*${produto.nome}*\n${formatPreco(produto.preco)}\n\n${urlProduto(produto)}`;
+  const msg = `🏍️ *Bazar Emicida — Liquidação de Mudança!*\n\nEncontrei esse item que pode te interessar:\n\n🎯 *${produto.nome}*\n💰 *${formatPreco(produto.preco)}*\n\n✅ Item pessoal, bem conservado\n✅ Preço justo e negociável\n✅ Pix, PicPay, PayPal ou cartão\n📍 Retirada em BH/MG\n\n👇 Clica pra ver as fotos e detalhes!\n${urlProduto(produto)}`;
   return `https://wa.me/?text=${encodeURIComponent(msg)}`;
 }
 
