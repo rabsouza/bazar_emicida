@@ -96,7 +96,17 @@
 
   const lista = document.getElementById('lista');
   renderLoading(lista);
-  fetchProdutos().then(data => { todos = data; render(); });
+  fetchProdutos().then(data => {
+    todos = data;
+    render();
+
+    // Abre modal direto se ?id= estiver na URL
+    const idParam = new URLSearchParams(window.location.search).get('id');
+    if (idParam) {
+      const produto = data.find(p => p.id === idParam);
+      if (produto) setTimeout(() => abrirModal(produto), 300);
+    }
+  });
 </script>
 </body>
 </html>
